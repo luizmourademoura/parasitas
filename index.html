@@ -98,6 +98,8 @@
         repeticao: "Repetir após 7 dias se necessário",
         obs: "Inativo em meio aeróbico; usar em tanque hospital",
         sintomas: "Diarreia, secreção intestinal excessiva, perda de apetite",
+        afetaPlantas: "Sim, pode afetar plantas se usado em altas concentrações.",
+        afetaBacterias: "Sim, pode prejudicar bactérias benéficas no filtro.",
       },
       mebendazol: {
         nome: "Mebendazol",
@@ -108,6 +110,8 @@
         repeticao: "Repetir após 10 dias",
         obs: "Pouco solúvel; usar suspensão homogênea",
         sintomas: "Vermes visíveis nas fezes, emagrecimento, letargia",
+        afetaPlantas: "Sim, pode prejudicar plantas aquáticas se usado em excesso.",
+        afetaBacterias: "Sim, pode afetar a filtragem biológica devido à toxicidade.",
       },
       levamisol: {
         nome: "Levamisol HCl",
@@ -118,6 +122,8 @@
         repeticao: "Repetir após 7 a 10 dias",
         obs: "Estimula sistema imune; seguro em pH neutro",
         sintomas: "Crescimento retardado, dificuldade de natação, abdômen distendido",
+        afetaPlantas: "Não, não afeta diretamente as plantas.",
+        afetaBacterias: "Não afeta significativamente as bactérias benéficas.",
       },
       praziquantel: {
         nome: "Praziquantel",
@@ -128,16 +134,8 @@
         repeticao: "Repetir após 5–7 dias",
         obs: "Insolúvel em água; pré-dissolver em álcool",
         sintomas: "Presença de vermes visíveis ou contagem de ovos nas fezes",
-      },
-      niclosamida: {
-        nome: "Niclosamida",
-        acao: "Cestódeos (tênias)",
-        dosagem: "1–2 mg/L (banho prolongado) ou 50–100 mg/100g alimento",
-        uso: "Banho ou via oral",
-        duracao: "1–3 dias (ração); 6–12h (banho)",
-        repeticao: "Repetir após 5–7 dias",
-        obs: "Insolúvel em água; pré-dissolver em álcool",
-        sintomas: "Presença de vermes visíveis ou contagem de ovos nas fezes",
+        afetaPlantas: "Sim, pode afetar plantas aquáticas se não for administrado corretamente.",
+        afetaBacterias: "Sim, pode afetar bactérias benéficas no filtro em altas doses.",
       },
       azulmetileno: {
         nome: "Azul de Metileno",
@@ -148,6 +146,8 @@
         repeticao: "Pode repetir após 7 dias se necessário",
         obs: "Pode manchar aquário, usar em tanque hospital",
         sintomas: "Fungos visíveis, manchas na pele, natação descoordenada",
+        afetaPlantas: "Sim, pode manchar e danificar plantas se usado em excesso.",
+        afetaBacterias: "Sim, pode afetar negativamente as bactérias benéficas.",
       },
       verde: {
         nome: "Verde de Malaquita",
@@ -158,6 +158,8 @@
         repeticao: "Repetir após 7 dias, se necessário",
         obs: "Tóxico em altas doses; usar com precaução",
         sintomas: "Fungos visíveis, manchas na pele, natação irregular",
+        afetaPlantas: "Sim, pode prejudicar plantas aquáticas em doses elevadas.",
+        afetaBacterias: "Sim, pode afetar a filtragem biológica.",
       },
       permanganato: {
         nome: "Permanganato de Potássio",
@@ -166,42 +168,43 @@
         uso: "Banho curto",
         duracao: "Banho único",
         repeticao: "Não recomendado repetir sem teste",
-        obs: "Requer controle de pH",
-        sintomas: "Infecções bacterianas, feridas abertas, natação irregular",
-      },
-      neomicina: {
-        nome: "Sulfato de Neomicina",
-        acao: "Bactérias gram-negativas, infecções intestinais",
-        dosagem: "10–20 mg/L (via oral) ou 50–100 mg/100g de alimento",
-        uso: "Ração medicada ou via oral",
-        duracao: "5 a 7 dias",
-        repeticao: "Repetir após 10 dias",
-        obs: "Não usar em peixe com lesões abertas",
-        sintomas: "Diarreia, abdômen distendido, letargia",
+        obs: "Necessário monitorar para evitar toxicidade",
+        sintomas: "Lesões cutâneas, dificuldades respiratórias",
+        afetaPlantas: "Sim, pode prejudicar plantas aquáticas.",
+        afetaBacterias: "Sim, pode afetar bactérias benéficas.",
       }
     };
 
     function mostrarInfo() {
-      const medicamento = document.getElementById("medicamento").value;
+      const medicamentoSelecionado = document.getElementById("medicamento").value;
       const infoBox = document.getElementById("info");
-      infoBox.style.display = medicamento ? "block" : "none";
 
-      if (medicamento && dados[medicamento]) {
-        const medicamentoInfo = dados[medicamento];
-        let html = `<h3>${medicamentoInfo.nome}</h3>`;
-        html += `<p><strong>Ação:</strong> ${medicamentoInfo.acao}</p>`;
-        html += `<p><strong>Dosagem:</strong> ${medicamentoInfo.dosagem}</p>`;
-        html += `<p><strong>Uso:</strong> ${medicamentoInfo.uso}</p>`;
-        html += `<p><strong>Duração:</strong> ${medicamentoInfo.duracao}</p>`;
-        html += `<p><strong>Repetição:</strong> ${medicamentoInfo.repeticao}</p>`;
-        html += `<p><strong>Observações:</strong> ${medicamentoInfo.obs}</p>`;
-        html += `<p><strong>Sintomas:</strong> ${medicamentoInfo.sintomas}</p>`;
-        infoBox.innerHTML = html;
+      if (medicamentoSelecionado && dados[medicamentoSelecionado]) {
+        const dadosMedicamento = dados[medicamentoSelecionado];
+        
+        let htmlContent = `
+          <h3>${dadosMedicamento.nome}</h3>
+          <p><strong>Ação:</strong> ${dadosMedicamento.acao}</p>
+          <p><strong>Dosagem:</strong> ${dadosMedicamento.dosagem}</p>
+          <p><strong>Modo de Uso:</strong> ${dadosMedicamento.uso}</p>
+          <p><strong>Duração:</strong> ${dadosMedicamento.duracao}</p>
+          <p><strong>Repetição:</strong> ${dadosMedicamento.repeticao}</p>
+          <p><strong>Observações:</strong> ${dadosMedicamento.obs}</p>
+          <p><strong>Sintomas de Infecção:</strong> ${dadosMedicamento.sintomas}</p>
+          <p><strong>Afecta Plantas:</strong> ${dadosMedicamento.afetaPlantas}</p>
+          <p><strong>Afecta Bactérias Benéficas no Filtro:</strong> ${dadosMedicamento.afetaBacterias}</p>
+        `;
+        
+        infoBox.innerHTML = htmlContent;
+        infoBox.style.display = 'block';
+      } else {
+        infoBox.style.display = 'none';
       }
     }
   </script>
 </body>
 </html>
+
 
 
 
