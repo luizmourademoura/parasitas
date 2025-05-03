@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#81d4fa">
   <link rel="manifest" href="manifest.json">
-  <title>Consulta Antiparasitários - PLAM</title>
+  <title>Consulta Medicamentos - PLAM</title>
   <style>
     body {
       font-family: sans-serif;
@@ -55,7 +55,7 @@
   </style>
 </head>
 <body>
-  <h2>Consulta Rápida de Antiparasitários</h2>
+  <h2>Consulta Rápida de Medicamentos</h2>
   <label for="medicamento">Escolha um medicamento:</label>
   <select id="medicamento" onchange="mostrarInfo()">
     <option value="">-- Selecione --</option>
@@ -63,12 +63,26 @@
     <option value="mebendazol">Mebendazol</option>
     <option value="levamisol">Levamisol HCl</option>
     <option value="praziquantel">Praziquantel</option>
+    <option value="niclosamida">Niclosamida</option>
     <option value="albendazol">Albendazol</option>
     <option value="piperazina">Piperazina</option>
     <option value="formol">Formol (37%)</option>
     <option value="cobre">Sulfato de Cobre</option>
     <option value="triclorfon">Triclorfon (Dipterex)</option>
     <option value="fembendazol">Fembendazol</option>
+    <option value="azulmetileno">Azul de Metileno</option>
+    <option value="verde">Verde de Malaquita</option>
+    <option value="permanganato">Permanganato de Potássio</option>
+    <option value="neomicina">Sulfato de Neomicina</option>
+    <option value="oxolinico">Ácido Oxolínico</option>
+    <option value="nalidixico">Ácido Nalidíxico</option>
+    <option value="nitrofurantoina">Nitrofurantoína</option>
+    <option value="furozolidona">Furozolidona</option>
+    <option value="azitromicina">Azitromicina</option>
+    <option value="quinina">Cloridrato de Quinina</option>
+    <option value="ascorbico">Ácido Ascórbico</option>
+    <option value="cloranfenicol">Cloranfenicol</option>
+    <option value="oxitetraciclina">Oxitetraciclina</option>
   </select>
 
   <div id="info" class="info-box"></div>
@@ -115,89 +129,153 @@
         obs: "Insolúvel em água; pré-dissolver em álcool",
         sintomas: "Presença de vermes visíveis ou contagem de ovos nas fezes",
       },
-      albendazol: {
-        nome: "Albendazol",
-        acao: "Nematódeos, Cestódeos",
-        dosagem: "10 mg/L (banho 6h) ou 100 mg/100g alimento",
-        uso: "Banho ou ração medicada",
-        duracao: "3 dias consecutivos",
-        repeticao: "Repetir após 7 dias",
-        obs: "Hepatotóxico em peixes sensíveis",
-        sintomas: "Letargia, emagrecimento progressivo, vermes visíveis nas fezes",
+      niclosamida: {
+        nome: "Niclosamida",
+        acao: "Cestódeos (tênias)",
+        dosagem: "1–2 mg/L (banho prolongado) ou 50–100 mg/100g alimento",
+        uso: "Banho ou via oral",
+        duracao: "1–3 dias (ração); 6–12h (banho)",
+        repeticao: "Repetir após 5–7 dias",
+        obs: "Insolúvel em água; pré-dissolver em álcool",
+        sintomas: "Presença de vermes visíveis ou contagem de ovos nas fezes",
       },
-      piperazina: {
-        nome: "Piperazina",
-        acao: "Nematódeos",
-        dosagem: "10 mg/L (banho de 24h)",
-        uso: "Banho",
-        duracao: "1 dia (banho único)",
-        repeticao: "Repetir após 5 a 7 dias",
-        obs: "Paralisa vermes intestinais",
-        sintomas: "Diarreia, fezes com aparência viscosa",
+      azulmetileno: {
+        nome: "Azul de Metileno",
+        acao: "Protozoários, fungos, bactérias",
+        dosagem: "10–15 mg/L (banho de 30min a 1h)",
+        uso: "Banho de imersão",
+        duracao: "Banho único ou até 3 dias consecutivos",
+        repeticao: "Pode repetir após 7 dias se necessário",
+        obs: "Pode manchar aquário, usar em tanque hospital",
+        sintomas: "Fungos visíveis, manchas na pele, natação descoordenada",
       },
-      formol: {
-        nome: "Formol (37%)",
-        acao: "Protozoários externos (Ichthyophthirius, Chilodonella)",
-        dosagem: "25 mg/L por 30–60 min",
+      verde: {
+        nome: "Verde de Malaquita",
+        acao: "Protozoários, fungos, ectoparasitas",
+        dosagem: "0,5–1 mg/L por 24–48h",
+        uso: "Banho prolongado",
+        duracao: "1–2 dias consecutivos",
+        repeticao: "Repetir após 7 dias, se necessário",
+        obs: "Tóxico em altas doses; usar com precaução",
+        sintomas: "Fungos visíveis, manchas na pele, natação irregular",
+      },
+      permanganato: {
+        nome: "Permanganato de Potássio",
+        acao: "Oxidante, tratamento de parasitas e doenças bacterianas",
+        dosagem: "1–2 mg/L (banho de 15 a 30min)",
         uso: "Banho curto",
         duracao: "Banho único",
-        repeticao: "Pode ser repetido após 48h com cuidado",
-        obs: "Tóxico; usar com aeração",
-        sintomas: "Manchas brancas na pele, natação descoordenada",
-      },
-      cobre: {
-        nome: "Sulfato de Cobre",
-        acao: "Protozoários externos, alguns helmintos",
-        dosagem: "0,15–0,20 mg/L contínuo",
-        uso: "Banho prolongado",
-        duracao: "5–7 dias com controle de cobre ativo",
         repeticao: "Não recomendado repetir sem teste",
-        obs: "Requer controle rígido de pH e KH",
-        sintomas: "Lesões cutâneas, natação irregular, perda de escamas",
+        obs: "Requer controle de pH",
+        sintomas: "Infecções bacterianas, feridas abertas, natação irregular",
       },
-      triclorfon: {
-        nome: "Triclorfon (Dipterex)",
-        acao: "Crustáceos parasitas (Argulus, Lernaea)",
-        dosagem: "0,25–0,5 mg/L por 24h",
+      neomicina: {
+        nome: "Sulfato de Neomicina",
+        acao: "Bactérias gram-negativas, infecções intestinais",
+        dosagem: "0,2–0,5 mg/L por 24–48h",
+        uso: "Banho ou via oral",
+        duracao: "Até 3 dias consecutivos",
+        repeticao: "Repetir após 7 dias, se necessário",
+        obs: "Eficaz apenas em infecções externas",
+        sintomas: "Infecções visíveis, secreção excessiva",
+      },
+      oxolinico: {
+        nome: "Ácido Oxolínico",
+        acao: "Bactérias gram-negativas, Aeromonas",
+        dosagem: "50 mg/L por 1–2h",
         uso: "Banho",
-        duracao: "1 dia",
-        repeticao: "Repetir após 5–7 dias até erradicação",
-        obs: "Tóxico para invertebrados e plantas",
-        sintomas: "Presença de parasitas visíveis no corpo do peixe",
+        duracao: "Banho único ou 2 dias consecutivos",
+        repeticao: "Repetir após 7 dias, se necessário",
+        obs: "Rápido efeito antibacteriano",
+        sintomas: "Infecções de pele, úlceras",
       },
-      fembendazol: {
-        nome: "Fembendazol",
-        acao: "Nematódeos, alguns cestódeos",
-        dosagem: "1–2 mg/L ou 100 mg/100g ração",
-        uso: "Banho ou oral",
-        duracao: "5 dias consecutivos (oral)",
-        repeticao: "Repetir após 10 dias",
-        obs: "Ação lenta; repetir tratamento",
-        sintomas: "Vermes intestinais, emagrecimento, falta de apetite",
-      }
+      nalidixico: {
+        nome: "Ácido Nalidíxico",
+        acao: "Bactérias gram-negativas, infecções urinárias",
+        dosagem: "0,5–1 mg/L por 24h",
+        uso: "Banho ou via oral",
+        duracao: "3–5 dias consecutivos",
+        repeticao: "Repetir após 7 a 10 dias",
+        obs: "Tratamento eficaz contra Aeromonas",
+        sintomas: "Diarreia, secreção intestinal excessiva",
+      },
+      azitromicina: {
+        nome: "Azitromicina",
+        acao: "Bactérias gram-positivas, gram-negativas e alguns protozoários",
+        dosagem: "50 mg/L por 24h",
+        uso: "Banho ou via oral",
+        duracao: "1–3 dias",
+        repeticao: "Repetir após 7 dias, se necessário",
+        obs: "Pode causar resistência bacteriana em dosagens erradas",
+        sintomas: "Infecções respiratórias, úlceras, secreções excessivas",
+      },
+      quinina: {
+        nome: "Cloridrato de Quinina",
+        acao: "Plasmodium, malária",
+        dosagem: "2–5 mg/L por 24h",
+        uso: "Banho",
+        duracao: "1–2 dias consecutivos",
+        repeticao: "Repetir após 7 dias",
+        obs: "Usar com precaução em altas doses",
+        sintomas: "Febre, tremores, letargia",
+      },
+      ascorbico: {
+        nome: "Ácido Ascórbico",
+        acao: "Vitamina C, auxilia no sistema imune",
+        dosagem: "50 mg/L por 1–2h",
+        uso: "Banho ou ração",
+        duracao: "1–2 dias consecutivos",
+        repeticao: "Repetir após 7 dias, se necessário",
+        obs: "Pode ser administrado preventivamente",
+        sintomas: "Fadiga, perda de apetite, natação irregular",
+      },
+      cloranfenicol: {
+        nome: "Cloranfenicol",
+        acao: "Bactérias gram-positivas e gram-negativas",
+        dosagem: "50 mg/L por 24h",
+        uso: "Banho ou via oral",
+        duracao: "1–2 dias consecutivos",
+        repeticao: "Repetir após 7 a 10 dias",
+        obs: "Cuidado com overdoses, pode afetar o fígado",
+        sintomas: "Infecções internas, feridas abertas",
+      },
+      oxitetraciclina: {
+        nome: "Oxitetraciclina",
+        acao: "Bactérias gram-positivas e gram-negativas",
+        dosagem: "20 mg/L por 24h",
+        uso: "Banho ou via oral",
+        duracao: "1–3 dias consecutivos",
+        repeticao: "Repetir após 7 dias, se necessário",
+        obs: "Antibiótico de amplo espectro",
+        sintomas: "Infecções bacterianas e fúngicas",
+      },
     };
 
     function mostrarInfo() {
-      const med = document.getElementById("medicamento").value;
-      const info = document.getElementById("info");
-      if (dados[med]) {
-        const d = dados[med];
-        info.innerHTML = `<h3>${d.nome}</h3>
-          <p><strong>Ação contra:</strong> ${d.acao}</p>
-          <p><strong>Dosagem recomendada:</strong> ${d.dosagem}</p>
-          <p><strong>Forma de uso:</strong> ${d.uso}</p>
-          <p><strong>Duração do tratamento:</strong> ${d.duracao}</p>
-          <p><strong>Repetição:</strong> ${d.repeticao}</p>
-          <p><strong>Observações:</strong> ${d.obs}</p>
-          <p><strong>Sintomas indicativos:</strong> ${d.sintomas}</p>`;
-        info.style.display = "block";
+      const medicamento = document.getElementById("medicamento").value;
+      const infoBox = document.getElementById("info");
+
+      if (medicamento) {
+        const dadosMedicamento = dados[medicamento];
+        infoBox.style.display = "block";
+        infoBox.innerHTML = `
+          <h3>${dadosMedicamento.nome}</h3>
+          <p><strong>Ação:</strong> ${dadosMedicamento.acao}</p>
+          <p><strong>Dosagem:</strong> ${dadosMedicamento.dosagem}</p>
+          <p><strong>Uso:</strong> ${dadosMedicamento.uso}</p>
+          <p><strong>Duração:</strong> ${dadosMedicamento.duracao}</p>
+          <p><strong>Repetição:</strong> ${dadosMedicamento.repeticao}</p>
+          <p><strong>Observações:</strong> ${dadosMedicamento.obs}</p>
+          <p><strong>Sintomas de infecção:</strong> ${dadosMedicamento.sintomas}</p>
+        `;
       } else {
-        info.style.display = "none";
+        infoBox.style.display = "none";
       }
     }
   </script>
 </body>
 </html>
+
 
 
 
